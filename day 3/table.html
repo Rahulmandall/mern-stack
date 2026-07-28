@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>assignment</title>
+</head>
+<body>
+    
+
+    <title>Table Example</title>
+    <style>
+        table{
+            width:900px;
+            border-collapse:collapse;
+            margin:auto;
+        }
+        td,th{
+            border:2px solid black;
+            text-align:center;
+            padding:20px;
+            font-size:30px;
+        }
+        th{
+            font-size:40px;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+
+    <tr>
+        <th>Header</th>
+        <th>Header</th>
+        <th>Header</th>
+        <th>Header</th>
+    </tr>
+
+    <tr>
+        <td rowspan="4">span<br>rows</td>
+        <td colspan="3">span columns</td>
+    </tr>
+
+    <tr>
+        <td colspan="2">span columns</td>
+        <td rowspan="3">span<br>both</td>
+    </tr>
+
+    <tr>
+        <td rowspan="2">span<br>rows</td>
+        <td>span columns</td>
+    </tr>
+
+    <tr>
+        <td>span both</td>
+    </tr>
+
+</table>
+
+
+
+
+
+</body>
+</html>

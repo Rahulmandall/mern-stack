@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition</title>
+    <style>
+        Body {
+            background-color: black;
+        }
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: white;
+            transition-property: height;
+            transition-property: all;
+            transition-duration: 2s;
+            box-shadow: 0px 0px 44px 22px white;
+            border-radius: 50%;
+            margin:auto
+            
+
+
+            
+            
+        }
+
+        .box:hover {
+            background-color: grey;
+            box-shadow: 0px 0px 44px 20px grey;
+
+           
+            
+
+        }
+
+        img{
+            animation: liljhola 6s infinite;
+            animation-timing-function: linear;  
+            width: 80px;
+            height: 80px;
+        }
+
+        @keyframes liljhola {
+            0%{
+                margin-left: 200px;
+                
+            }
+            25%{
+                margin-top: 200px;
+            }
+            50%{
+                margin-left: 200px;
+            }
+            75%{
+                margin-top: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5el1mJ1W1boH5aIx1LOLidOKYBnFolAKqA-hGfNbuNA&s=10" alt="">
+</body>
+</html>

@@ -1,3 +1,86 @@
+/* Header */
+.contact{
+    width:60%;
+    margin:60px auto;
+}
+
+.contact h1{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.contact input,
+.contact textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:16px;
+}
+
+.contact textarea{
+    height:150px;
+}
+
+.contact button{
+    padding:12px 25px;
+    background:#2bb24c;
+    color:#fff;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+header{
+    width:100%;
+    background:#ffffff;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.logo h2{
+    color:#2bb24c;
+    font-size:30px;
+    font-weight:600;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#333;
+    font-size:17px;
+    font-weight:500;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#2bb24c;
+}
+
+/* Sign Up Button */
+
+.signup{
+    background:#0d79d8;
+    color:rgb(220, 121, 179);
+    padding:10px 20px;
+    border-radius:5px;
+}
+
+.signup:hover{
+    background:#23963f;
+    color:white;
+}
+
+
 *{
     margin:0;
     padding:0;

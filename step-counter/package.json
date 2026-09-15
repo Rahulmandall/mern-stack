@@ -1,0 +1,19 @@
+{
+  "name": "steptrack",
+  "version": "1.0.0",
+  "description": "An offline-first step counter that keeps your data on your device.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "step-counter",
+    "fitness",
+    "pwa"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.0"
+  }
+}

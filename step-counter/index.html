@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="description" content="StepTrack is a private, offline-first step counter.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+  <title>StepTrack</title>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="StepTrack home"><span class="brand-mark">⌁</span><span>StepTrack</span></a>
+    <div class="top-actions">
+      <span id="motion-status" class="status-pill" role="status">Motion off</span>
+      <button id="theme-toggle" class="icon-button" type="button" aria-label="Toggle theme">◐</button>
+    </div>
+  </header>
+
+  <main id="app" tabindex="-1">
+    <section id="home-view" class="view" data-view="home">
+      <div class="page-heading"><div><p class="eyebrow" id="greeting">GOOD MORNING</p><h1>Keep moving<span class="accent">.</span></h1></div><time id="today-label"></time></div>
+      <div class="hero-grid">
+        <article class="card goal-card">
+          <div class="goal-ring" id="goal-ring" role="img" aria-label="0 of 10000 steps">
+            <div class="goal-ring-inner"><strong id="step-count">0</strong><span>steps</span></div>
+          </div>
+          <div class="goal-copy"><p class="muted">Daily goal</p><div class="goal-value"><strong id="goal-value">10,000</strong><button id="focus-goal" class="inline-edit" data-action="focus-goal" aria-label="Edit daily goal">✎</button></div><p id="goal-message" class="success-text">Every step counts.</p></div>
+        </article>
+        <article class="card quick-card"><div class="card-title"><h2>Today at a glance</h2><span class="live-dot" aria-hidden="true"></span></div><div class="metric-grid"><div><span class="metric-icon">↔</span><strong id="distance-value">0 km</strong><small>Distance</small></div><div><span class="metric-icon">◒</span><strong id="calories-value">0 kcal</strong><small>Calories</small></div><div><span class="metric-icon">◷</span><strong id="active-value">0 min</strong><small>Active time</small></div><div><span class="metric-icon">♨</span><strong id="pace-value">—</strong><small>Avg. pace</small></div></div></article>
+      </div>
+      <div class="control-row"><button id="pause-button" class="button button-primary" type="button">Ⅱ&nbsp; Pause tracking</button><button id="reset-button" class="button button-ghost" type="button">Reset today</button></div>
+      <article class="card tip-card"><div class="tip-icon">✦</div><div><strong id="tip-title">A small walk is a big win</strong><p id="tip-text">Try a two-minute walk after your next glass of water.</p></div><button id="new-tip" class="icon-button" type="button" aria-label="New tip">↻</button></article>
+      <div id="developer-tools" class="card developer-card hidden"><div><strong>Developer test mode</strong><p>Manual steps are enabled for testing. This does not use motion sensors.</p></div><div class="control-row"><button id="add-steps-button" class="button button-secondary" type="button">+ 100 steps</button><button id="add-thousand-button" class="button button-ghost" type="button">+ 1,000</button></div></div>
+    </section>
+
+    <section id="history-view" class="view hidden" data-view="history">
+      <div class="page-heading"><div><p class="eyebrow">YOUR JOURNEY</p><h1>History<span class="accent">.</span></h1></div><button id="export-csv" class="button button-ghost" type="button">⇩ Export CSV</button></div>
+      <article class="card"><div class="section-heading"><div><h2>Recent days</h2><p class="muted">Your step-by-step progress, stored on this device.</p></div><span id="history-summary" class="badge"></span></div><div class="table-wrap"><table><thead><tr><th>Date</th><th>Steps</th><th>Goal</th><th>Distance</th><th>Status</th></tr></thead><tbody id="history-body"></tbody></table></div><p id="empty-history" class="empty-state hidden">Your completed days will appear here.</p></article>
+    </section>
+
+    <section id="statistics-view" class="view hidden" data-view="statistics">
+      <div class="page-heading"><div><p class="eyebrow">THE BIG PICTURE</p><h1>Statistics<span class="accent">.</span></h1></div><select id="stats-range" class="select-control" aria-label="Statistics range"><option value="7">Last 7 days</option><option value="30">Last 30 days</option><option value="90">Last 90 days</option></select></div>
+      <div class="stats-grid"><article class="card stat-highlight"><span>Average daily steps</span><strong id="average-steps">0</strong><small id="average-caption">Last 7 days</small></article><article class="card stat-highlight"><span>Best day</span><strong id="best-day">—</strong><small id="best-day-caption">Keep going</small></article><article class="card stat-highlight"><span>Goal completion</span><strong id="completion-rate">0%</strong><small id="completion-caption">Last 7 days</small></article><article class="card stat-highlight"><span>Total distance</span><strong id="total-distance">0 km</strong><small>Estimate</small></article><article class="card stat-highlight"><span>Estimated calories</span><strong id="total-calories">0 kcal</strong><small>Estimate</small></article><article class="card stat-highlight"><span>Active walking time</span><strong id="total-active">0 min</strong><small>Detected activity</small></article></div>
+      <article class="card chart-card"><div class="section-heading"><div><h2>Steps over time</h2><p class="muted">Daily total compared with your goal.</p></div><span class="legend"><i class="legend-step"></i>Steps <i class="legend-goal"></i>Goal</span></div><div class="chart-wrap"><canvas id="steps-chart" height="240" aria-label="Steps over time chart"></canvas></div></article>
+      <article class="card insight-card"><span class="tip-icon">◈</span><div><strong id="insight-title">Your consistency is building</strong><p id="insight-text">Complete a few more days to unlock a personalized insight.</p></div></article>
+    </section>
+
+    <section id="achievements-view" class="view hidden" data-view="achievements">
+      <div class="page-heading"><div><p class="eyebrow">MILESTONES</p><h1>Achievements<span class="accent">.</span></h1></div><span id="achievement-count" class="badge">0 unlocked</span></div>
+      <article class="card streak-banner"><div><span class="streak-flame">♨</span><div><strong id="current-streak">0 day streak</strong><p>Show up for yourself today.</p></div></div><div class="streak-best"><small>Best streak</small><strong id="best-streak">0 days</strong></div></article>
+      <div id="achievements-grid" class="achievement-grid"></div>
+    </section>
+
+    <section id="settings-view" class="view hidden" data-view="settings">
+      <div class="page-heading"><div><p class="eyebrow">MAKE IT YOURS</p><h1>Settings<span class="accent">.</span></h1></div></div>
+      <div class="settings-layout">
+        <article class="card settings-card"><div class="section-heading"><div><h2>Profile & goals</h2><p class="muted">Used to personalize your estimates.</p></div></div><form id="profile-form"><label>Name<input id="profile-name" type="text" maxlength="40" placeholder="Your name"></label><div class="form-grid"><label>Age<input id="profile-age" type="number" min="13" max="120" required></label><label>Height <span class="label-help">(cm)</span><input id="profile-height" type="number" min="100" max="250" required></label><label>Weight <span class="label-help">(kg)</span><input id="profile-weight" type="number" min="25" max="300" required></label></div><label>Daily step goal<input id="profile-goal" type="number" min="100" max="100000" step="100" required></label><label>Stride length <span class="label-help">(cm, estimated from height by default)</span><input id="profile-stride" type="number" min="20" max="250" step="1" required></label><label>Distance unit<select id="profile-unit"><option value="km">Kilometres (km)</option><option value="mi">Miles (mi)</option></select></label><button class="button button-primary" type="submit">Save profile</button></form></article>
+        <article class="card settings-card"><div class="section-heading"><div><h2>Appearance & tracking</h2><p class="muted">StepTrack keeps everything on this device.</p></div></div><label class="switch-row"><span><strong>Dark theme</strong><small>Easy on the eyes at night</small></span><input id="dark-theme" type="checkbox"><i class="switch" aria-hidden="true"></i></label><label class="switch-row"><span><strong>Motion tracking</strong><small>Detect steps from your device motion</small></span><input id="motion-enabled" type="checkbox"><i class="switch" aria-hidden="true"></i></label><label class="switch-row developer-switch"><span><strong>Developer test mode</strong><small>Show manual step controls for testing</small></span><input id="developer-mode" type="checkbox"><i class="switch" aria-hidden="true"></i></label><button id="request-motion" class="button button-secondary full-width" type="button">Enable motion permissions</button></article>
+        <article class="card settings-card data-card"><div class="section-heading"><div><h2>Your data</h2><p class="muted">Export a backup or restore a previous one.</p></div></div><div class="data-actions"><button id="export-json" class="button button-ghost" type="button">⇩ Export JSON</button><label class="button button-ghost file-button">⇧ Import JSON<input id="import-json" type="file" accept="application/json,.json"></label></div><button id="clear-data" class="text-button danger" type="button">Delete all local data</button><p class="privacy-note">No account required. StepTrack never uploads your data.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Primary navigation"><a href="#home" data-nav="home" class="active"><span>⌂</span><small>Home</small></a><a href="#history" data-nav="history"><span>▤</span><small>History</small></a><a href="#statistics" data-nav="statistics"><span>◒</span><small>Stats</small></a><a href="#achievements" data-nav="achievements"><span>✦</span><small>Achievements</small></a><a href="#settings" data-nav="settings"><span>⚙</span><small>Settings</small></a></nav>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

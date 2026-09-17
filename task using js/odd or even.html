@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Odd or Even</title>
+</head>
+<body>
+
+<h2>Odd or Even Number</h2>
+
+<input type="number" id="number" placeholder="Enter a number">
+<button onclick="checkNumber()">Check</button>
+
+<p id="result"></p>
+
+<script>
+function checkNumber() {
+    let num = document.getElementById("number").value;
+
+    if (num % 2 == 0) {
+        document.getElementById("result").innerHTML = "Even Number";
+    } else {
+        document.getElementById("result").innerHTML = "Odd Number";
+    }
+}
+</script>
+
+</body>
+</html>

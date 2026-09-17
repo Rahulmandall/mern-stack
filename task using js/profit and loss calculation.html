@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profit and Loss</title>
+</head>
+<body>
+
+<h2>Profit and Loss Calculator</h2>
+
+<input type="number" id="cost" placeholder="Enter Cost Price">
+<input type="number" id="selling" placeholder="Enter Selling Price">
+
+<button onclick="calculate()">Calculate</button>
+
+<p id="result"></p>
+
+<script>
+function calculate() {
+    let cost = Number(document.getElementById("cost").value);
+    let selling = Number(document.getElementById("selling").value);
+
+    if (selling > cost) {
+        let profit = selling - cost;
+        document.getElementById("result").innerHTML =
+        "Profit = " + profit;
+    } else if (cost > selling) {
+        let loss = cost - selling;
+        document.getElementById("result").innerHTML =
+        "Loss = " + loss;
+    } else {
+        document.getElementById("result").innerHTML =
+        "No Profit No Loss";
+    }
+}
+</script>
+
+</body>
+</html>

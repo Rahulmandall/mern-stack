@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Day Finder</title>
+</head>
+<body>
+
+<h2>Day Number to Day Name</h2>
+
+<input type="number" id="day" placeholder="Enter number 1 to 7">
+<button onclick="findDay()">Find Day</button>
+
+<p id="result"></p>
+
+<script>
+function findDay() {
+    let day = Number(document.getElementById("day").value);
+    let result;
+
+    switch(day) {
+        case 1:
+            result = "Sunday";
+            break;
+        case 2:
+            result = "Monday";
+            break;
+        case 3:
+            result = "Tuesday";
+            break;
+        case 4:
+            result = "Wednesday";
+            break;
+        case 5:
+            result = "Thursday";
+            break;
+        case 6:
+            result = "Friday";
+            break;
+        case 7:
+            result = "Saturday";
+            break;
+        default:
+            result = "Invalid Day Number";
+    }
+
+    document.getElementById("result").innerHTML = result;
+}
+</script>
+
+</body>
+</html>
